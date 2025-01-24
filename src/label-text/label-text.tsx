@@ -4,7 +4,7 @@ import { elLabelText } from './styles'
 export interface LabelTextProps extends LabelHTMLAttributes<HTMLLabelElement> {
   variant?: 'soft' | 'strong'
   size?: 'small' | 'medium'
-  legend?: 'label' | 'span' | 'text'
+  legend?: 'label' | 'span' | 'text' | 'dt' | 'p'
   isRequired?: boolean
 }
 
