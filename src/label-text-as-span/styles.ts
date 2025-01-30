@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 
+// its used only in POC sandbox, we will used linarian CSS
 export const ElLabelText = styled.span`
   &[data-size='small'] {
     font-size: var(--font-size-xs);
