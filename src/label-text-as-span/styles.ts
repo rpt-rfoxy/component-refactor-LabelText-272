@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const elLabelText = styled.label`
+export const ElLabelText = styled.span`
   &[data-size='small'] {
     font-size: var(--font-size-xs);
   }

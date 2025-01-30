@@ -1,19 +1,28 @@
 import React, { FC, LabelHTMLAttributes } from 'react'
 import { elLabelText } from './styles'
 
-export interface LabelTextProps extends LabelHTMLAttributes<HTMLLabelElement> {
+interface LabelTextCommonProps {
   variant?: 'soft' | 'strong'
   size?: 'small' | 'medium'
-  legend?: 'label' | 'span' | 'text' | 'dt' | 'p'
   isRequired?: boolean
 }
+interface LabelTextAsLabel extends LabelHTMLAttributes<HTMLLabelElement>, LabelTextCommonProps {
+  as?: 'label'
+}
+interface LabelTextAsSpan extends LabelHTMLAttributes<HTMLSpanElement>, LabelTextCommonProps {
+  as?: 'span'
+}
+interface LabelTextAsDt extends LabelHTMLAttributes<HTMLElement>, LabelTextCommonProps {
+  as?: 'dt'
+}
 
-export const LabelText: FC<LabelTextProps> = ({ children, isRequired, size = 'medium', variant = 'soft', legend = "label", className, ...rest }) => {
-  const ElLabelText = elLabelText(legend)
+export type LabelTextProps = LabelTextAsLabel | LabelTextAsSpan | LabelTextAsDt;
+
+export const LabelText: FC<LabelTextProps> = ({ as: Element = 'label', children, isRequired, size = 'medium', variant = 'soft', className, ...rest }) => {
   return (
-    <ElLabelText {...rest} data-size={size} data-variant={variant}>
+    <Element {...rest} className={elLabelText} data-size={size} data-variant={variant}>
       {children}
       {isRequired && ' *'}
-    </ElLabelText>
+    </Element>
   )
 }
